@@ -5,6 +5,8 @@ function [model] = train(epochs)
 % Output:
 %   model: A struct containing the learned weights and biases and vocabulary.
 
+clear model;
+
 if size(ver('Octave'),1)
   OctaveMode = 1;
   warning('error', 'Octave:broadcast');
@@ -16,11 +18,11 @@ end
 
 % SET HYPERPARAMETERS HERE.
 batchsize = 100;  % Mini-batch size.
-learning_rate = 0.1;  % Learning rate; default = 0.1.
-momentum = 0.9;  % Momentum; default = 0.9.
-numhid1 = 50;  % Dimensionality of embedding space; default = 50.
-numhid2 = 200;  % Number of units in hidden layer; default = 200.
-init_wt = 0.01;  % Standard deviation of the normal distribution
+learning_rate = 0.1  % Learning rate; default = 0.1.
+momentum = 0.9  % Momentum; default = 0.9.
+numhid1 = 50  % Dimensionality of embedding space; default = 50.
+numhid2 = 200  % Number of units in hidden layer; default = 200.
+init_wt = 0.01  % Standard deviation of the normal distribution
                  % which is sampled to get the initial weights; default = 0.01
 
 % VARIABLES FOR TRACKING TRAINING PROGRESS.
@@ -240,4 +242,15 @@ else
   diff = etime(end_time, start_time);
 end
 fprintf(1, 'Training took %.2f seconds\n', diff);
+
+% Print params
+batchsize
+learning_rate
+momentum
+numhid1
+numhid2
+init_wt
+
 end
+
+
